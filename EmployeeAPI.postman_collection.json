@@ -1,0 +1,224 @@
+{
+	"info": {
+		"_postman_id": "bb5bf5ed-cc76-4687-99dc-d67f7910323b",
+		"name": "EmployeeAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23597711"
+	},
+	"item": [
+		{
+			"name": "GetAllEmployes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var response = JSON.parse(responseBody);\r",
+							"tests[\"validate employee name2\"] = response.data[1].employee_name == \"Garrett Winters\";\r",
+							"tests[\"validate Salary\"] = response.data[8].employee_salary == 205500;\r",
+							"tests[\"validate Age\"] = response.data[17].employee_age == 59;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"strictSSL": false
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://dummy.restapiexample.com/api/v1/employees",
+					"protocol": "https",
+					"host": [
+						"dummy",
+						"restapiexample",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"employees"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetSingleEmployee",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var response = JSON.parse(responseBody);\r",
+							"\r",
+							"tests[\"Validate employee name\"] = response.data.employee_name == \"Tiger Nixon\";\r",
+							"tests[\"Validate employee salary\"] = response.data.employee_salary == 320800;\r",
+							"tests[\"Validate employee age\"] = response.data.employee_age == 61;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"strictSSL": false
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://dummy.restapiexample.com/api/v1/employee/1",
+					"protocol": "https",
+					"host": [
+						"dummy",
+						"restapiexample",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"employee",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PostAddnewEmployee",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var response = JSON.parse(responseBody);\r",
+							"\r",
+							"tests[\"Validating Name\"] = response.data.name == \"John1\";\r",
+							"tests[\"Validating Salary\"] = response.data.Salary == 3200;\r",
+							"tests[\"Validating Age\"] = response.data.Age == 54;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"name\" : \"John1\",\r\n\"Salary\" : \"3200\",\r\n\"Age\" : \"54\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dummy.restapiexample.com/api/v1/create",
+					"protocol": "https",
+					"host": [
+						"dummy",
+						"restapiexample",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PutUpdateEmployeedata",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var response = JSON.parse(responseBody);\r",
+							"\r",
+							"tests[\"Validating Status\"] = response.status == \"success\";\r",
+							"tests[\"Validating message\"] = response.message == \"Successfully! Record has been updated.\";\r",
+							"tests[\"Validating Emp Salary\"] = response.data.employee_salary == 25000;\r",
+							"tests[\"Validating Emp Age\"] = response.data.employee_age == 45;\r",
+							"tests[\"Validating Status Code\"] = responseCode.code == \"200\";\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n    \"employee_name\": \"Herrod Chandler\",\r\n    \"employee_salary\": 25000,\r\n    \"employee_age\": 45\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dummy.restapiexample.com/api/v1/update/7",
+					"protocol": "https",
+					"host": [
+						"dummy",
+						"restapiexample",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"update",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteEmployeeData",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var response = JSON.parse(responseBody);\r",
+							"\r",
+							"tests[\"Validaing Status\"] = response.status == \"success\";\r",
+							"tests[\"Validaing data\"] = response.data == 2;\r",
+							"tests[\"Validaing message\"] = response.message == \"Successfully! Record has been deleted\";"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://dummy.restapiexample.com/api/v1/delete/2",
+					"protocol": "https",
+					"host": [
+						"dummy",
+						"restapiexample",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"delete",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
